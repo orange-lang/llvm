@@ -6,7 +6,7 @@ RUN mkdir /src
 ADD . /src
 
 WORKDIR /build
-RUN cmake -DCMAKE_BUILD_TYPE=MinSizeRel /src -DCMAKE_CXX_COMPILER=g++-4.9 -DCMAKE_C_COMPILER=gcc-4.9 -DCMAKE_INSTALL_PREFIX=/usr/local/llvm
+RUN cmake -DCMAKE_BUILD_TYPE=MinSizeRel /src -DCMAKE_CXX_COMPILER=g++-4.9 -DCMAKE_C_COMPILER=gcc-4.9 -DCMAKE_INSTALL_PREFIX=/usr/local/llvm -DLLVM_INCLUDE_TESTS=OFF -DLLVM_ENABLE_RTTI=ON
 RUN make 
 RUN make install
 RUN rm -rf /src /build 
